@@ -1,0 +1,161 @@
+http://hr.gs/423604
+
+# Admissions Interview Script
+
+Hi, Priyanka, it’s nice to meet you! My name is Claire, and I am a Teaching Fellow for the Grace Hopper Program at Fullstack Academy. 
+
+Before we begin, the structure of this interview has 4 parts:
+
+1. First, I'll tell you a bit about myself and tell you about the Fullstack curriculum,
+
+2. Then, we'll talk about your background and coding experience
+
+3. Then, we'll move on to the technical portion of the interview where we'll do some pair programming
+
+4. Finally, I’ll leave a few minutes at the end end to give you a chance to ask me any questions you may have.
+
+I recently graduated from Grace Hopper, Fullstack Academy’s partner school and before attending Grace Hopper, I studied Chinese and was pre-med was working in epidemiology research. After a while, I started to realize that healthcare was no longer the right fit for me and I started to explore programming and I found that it was really challenging in a very similar way to studying science and medicine. I got started with Codeacademy and other free resources and finally decided to take the leap and apply to the Grace Hopper Immersive Program. I got in and towards the end of the program, I applied for and was selected to be a Teaching Fellow for the next incoming Grace Hopper cohort. 
+
+And now, I’d love to hear more about you and what led you on your journey to learning to program?
+
+**I’m about to get into the curriculum, but before I do, which program is your first choice and what is your preferred start date?**
+
+Great, if you have any questions, I ask that you leave them for the end so that we have enough time for the pair-programming portion.
+
+Both the Fullstack and Grace Hopper programs share the same curriculum and instructors.
+
+The program is 18 weeks. The first 5 weeks are Foundations, which is a full-featured remote course that covers foundational concepts in javascript. Foundations is done outside of class, before the immersive portion begins, and students should expect to spend 20 to 30 hours a week on it. Also, students have plenty of support during Foundations – online office hours, discussion forums, and a graduate of the program who is now working in the industry will serve as a mentor to give students feedback on their code.
+
+In Junior Phase, students continue to deepen their javascript skills while also learning the various libraries and frameworks needed to build web applications. We teach Node on the back end, Express for server routing, Sequelize to build and interact with databases, we teach students the DOM (Document Object Model) and how to manipulate its elements, and finally we teach students React, which is a powerful and in-demand library for building front-end user interfaces.
+
+During foundations and junior phase we have a few checkpoints that help us assess students' learning to make sure that they are understanding key concepts before moving forward. This helps us fill in any learning gaps early.
+
+After Junior phase we have review week, which students have free. Students can use this time to review concepts and to work on side projects.
+
+After review week, is Senior phase and it’s dedicated to building web apps. There are three projects that students will build: an online e-commerce store, an open-ended hackathon project, and then a capstone project. Except for the hackathon, students work in teams to simulate a real-world work environment.
+
+Throughout Senior phase, students also practice daily coding algorithms in preparation for technical interviews and participate in career prep workshops such as resume building, how to conduct a successful job search, networking, and more. Senior phase concludes with Hiring Day, a job fair type of event where local NYC companies attend and conduct mini “speed-dating” style interviews with students. After graduation, students continue working closely with the Career Success Team to land a great job as a software engineer.
+
+That summarizes the curriculum at Fullstack and Grace Hopper. 
+
+**BEHAVIORAL CULTURE QUESTIONS:**
+
+* What are you doing right now, professionally?
+
+* What have you done so far with coding?
+
+* Why are you interested in coming to Fullstack Academy?
+
+* What would your plans be afterwards?
+
+* Can you tell me about a time you had a disagreement or conflict with a teammate and how you approached it?
+
+Alright great, now let’s get into the pair-programming portion.
+
+
+
+MULTIDIM SUM ****************************
+
+
+function multi_dim_sum_array(arr) {
+  var sum = 0;
+  for (var i = 0; i < arr.length; i++) {
+    if (typeof arr[i] == "number") {
+      sum += arr[i];
+    } else {
+      sum += multi_dim_sum_array(arr[i]);
+    }
+  }
+  return sum;
+}
+
+First, make sure the interviewee understands the extent of the problem; that a multi-dimensional array can be n number of levels deep. (Many interviewees assume that the array given is only two levels deep, and write code with two nested loops.) Explain to them why you need to be able to have code which works with an arbitrary number of levels. Walk them through the example solution given.
+
+If they’re stuck, next ask if they’ve encountered recursion yet in their studies yet. Hint to them that they’ll need to use recursion.
+
+If they’re still stuck, remind them that recursive functions generally directs control flow into two branches--the first, a base case, where something is returned; second, the recursive case, where the function is called again.
+
+If they remain stuck, tell them that the basic structure of the function should be: some type of iterator on the outside (a for loop, for instance) which iterates through the individual elements of the array, and then directs the control flow (deciding if the base case should be applied or the recursive case) at the current element to be iterated over.
+
+If they remain stuck, tell them that the base case should be when the currently-iterated-over element is a number, and that the recursive case should be when the current element is an array.
+
+The final, and most difficult, mental jump is towards the end of the function, where the interviewer must figure out how one function call returns its final sum to the function call above it; i.e., how the recursive stack works. It may be helpful to write out the “return sum” line at the end of their function to give them this final hint.
+
+Even if they’re unable to solve this problem on their own, it’s a good idea to try to walk them through how the function works recursively--there’s a great “Ah-ha” moment that’s very pleasurable the first few times you see recursion. This is also a great point to discuss O(n) time, and how recursion, while interesting academically, is rarely a time- or space- effective way to solve an engineering problem.
+
+RECURSIVE COUNTDOWN ************************
+
+
+function liftoff_countdown(num) {
+  if (num === 0) {
+    console.log("Liftoff!");        
+  } else {
+    console.log(num);
+    liftoff_countdown(num-1);
+  }
+}
+
+
+Hint
+All recursive functions have a base case and recursive case. The base case is the scenario where you don’t want to make a recursive call (where the function will stop calling itself). The recursive case is the scenario where you do want to make a recursive call, and (very importantly) make it in a way that brings you towards the base case. 
+
+Prompts: 
+What might the base case for liftoff countdown be?
+Recursive case?
+
+PAIR SUM ********************
+
+
+function pairSum(arr, target) {
+    for (var i = 0; i < arr.length; i++) {
+        for (var j = i + 1; j < arr.length; j++) {
+            if (arr[i] + arr[j] === target) return true;    
+        }
+    }
+    return false;
+}
+
+
+function pairSum(arr, target) {
+    var leftIdx = 0, rightIdx = arr.length - 1;
+    
+    if (arr.length < 2) return false; // edge case
+    
+    while (leftIdx !== rightIdx) {
+        var currSum = arr[leftIdx] + arr[rightIdx];
+         
+        if (currSum === target) return true;
+        else if (currSum < target) leftIdx++;
+        else rightIdx--;
+    }
+    
+    return false
+}
+
+Most candidates don’t have much trouble implementing a naive solution to pairSum if they've gotten this far. Common issues candidates have are trying to use forEach and not realizing the return gets swallowed inside the callback and struggling to make sure they aren't adding a number with itself to get the target (people tend to overthink that).
+
+People will often miss small optimizations in the naive approach, like returning early instead of using a boolean flag that gets returned at the end, or starting the inner loop at i + 1 (which also simplifies the problem of not adding a number to itself). It’s important to bring these up if they haven't used them in their naive solution
+
+When transitioning to make the bigger optimizations, ask if they're familiar with time complexity or Big O notation.
+
+In computer science, big O notation is used to classify algorithms according to how their running time or space requirements grow as the input size grows.
+
+
+ If they are, see if they can identify the Big O for their algorithm. If not, you get to try to explain the basics to them in ~2 minutes (hooray!). If they're struggling, focus on the number of comparisons actually being made for small, specific example arrays. You should be able to demonstrate that for an array with 3 elements, a completely unoptimized solution would make ~9 comparisons, and an array with 5 elements will make ~25, etc. See if they can identify the pattern before asking if they can think of a better way.
+
+Some people spot it quickly, but many struggle to make the jump from 'I understand why my algorithm is inefficient' to 'I see the O(n) solution.' I typically start by asking if they see something in the prompt (the fact that the array is sorted) that they aren't currently taking advantage of. If they're still not seeing it, maybe ask something like, 'what if instead of always starting from the beginning, we worked from the outside in?' Remember that it isn't ultimately about whether or not they come up with the solution we're looking for, but how they reason through the problem and use the info they're given.
+
+So for example, we'll start with the first pointer pointing to the smallest element, 1, and the second pointing to the biggest element, 5. Because 1 plus the largest number in the array is only 6, and is too small, we know that we need to increment the first pointer if there's a change we'll find a pair of number to equal 7.
+
+Some interviewees may come up with an O(nlogn) solution using binary search. Especially if they have a CS background of any kind, so it's good to at least be familiar with that approach, even if you're just going to tell them that it's a step in the right direction but still not the best we can do. 
+
+
+
+
+
+
+Admissions will be in touch with you within a week. There are 3 Possibilities for outcomes of interview: reject, accept, another technical interview
+
+If you have any other questions, feel free to reach out to us at admissions@fullstackacademy.com.
+
+Nice to meet you!

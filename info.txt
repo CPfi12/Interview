@@ -1,0 +1,45 @@
+# Recursion
+
+## If they’ve heard of Recursion
+
+1. Ask them what their understanding of recursion is
+
+2. Reiterate their understanding/explain very briefly what recursion is
+
+## If they’ve never heard of Recursion
+
+1. **Explain recursion:**
+
+Recursion is the process of taking a big problem and breaking it into multiple, smaller instances of the same problem. This generally means writing a function that calls *itself*. A recursive function generally directs control flow into two branches: a *base case* and a *recursive case*. 
+
+**The Base Case:**  is the condition at which the function *doesn’t* call itself. 
+
+**The Recursive Case:** the condition at which the function calls itself. 
+
+When a recursive function is called, it will check for the base case and if it doesn’t meet the base case,  then it meets the recursive case, and calls itself. The goal is write the function in a way such that each recursive call progressively gets you closer to reaching the base case. 
+
+2. **Questions to Ask to Gauge Understanding** 
+
+    * Is the sum for each recursive call the same as the final sum that gets returned? Why do you think so?
+
+# Call Stack
+
+## If they’ve heard of the Call Stack
+
+1. Ask them what their understanding is
+
+2. Reiterate their understanding/explain very briefly what the call stack is
+
+## If they’ve never heard of the Call Stack
+
+1. **Explain the call stack**
+
+The call stack is how the JavaScript engine keeps track of executing functions when multiple functions are called. When a recursive function is called, it gets placed on the call stack and every time it recursively calls itself, that function call gets placed on top of the call stack, like a stack of pancakes. When the recursive function reaches the base case, the JS engine will start resolving each recursive function call, starting with the last recursive call at the very top of the call stack. When each recursive function gets resolved, its result gets passed down to the recursive function call right below it on the stack. The functions keep resolving and passing their results down until the first call of the recursive function is reached and that’s when the entire function is resolved and exits out of the function. 
+
+2. **Questions to Ask to Gauge Understanding**
+
+    * What does each recursive call look like on the call stack? 
+
+    * What is input to the recursive call and what is the expected result for that call?
+
+
